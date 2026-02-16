@@ -53,7 +53,7 @@ static unsigned char idle_rate = DIGIJOYSTICK_DEFAULT_REPORT_INTERVAL / 4; // in
 static unsigned long last_report_time = 0;
 
 
-unsigned char gcn64_usbHidReportDescriptor[] PROGMEM = {
+const unsigned char gcn64_usbHidReportDescriptor[] PROGMEM = {
 		0x05, 0x01,										 // USAGE_PAGE (Generic Desktop)
 		0x09, 0x05,										 // USAGE (Gamepad)
 		0xa1, 0x01,										 // COLLECTION (Application)
@@ -91,7 +91,7 @@ unsigned char gcn64_usbHidReportDescriptor[] PROGMEM = {
 
 #define USBDESCR_DEVICE					1
 
-unsigned char usbDescrDevice[] PROGMEM = {		/* USB device descriptor */
+const unsigned char usbDescrDevice[] PROGMEM = {		/* USB device descriptor */
 		18,					/* sizeof(usbDescrDevice): length of descriptor in bytes */
 		USBDESCR_DEVICE,		/* descriptor type */
 		0x01, 0x01, /* USB version supported */
