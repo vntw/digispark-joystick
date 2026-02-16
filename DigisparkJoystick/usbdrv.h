@@ -185,7 +185,7 @@ USB_PUBLIC void usbPoll(void);
 #ifdef __cplusplus
 } // extern "C"
 #endif
-extern uchar *usbMsgPtr;
+extern const uchar *usbMsgPtr;
 /* This variable may be used to pass transmit data to the driver from the
  * implementation of usbFunctionWrite(). It is also used internally by the
  * driver for standard control requests.
@@ -481,45 +481,45 @@ extern volatile schar   usbRxLen;
 #ifndef __ASSEMBLER__
 extern
 #if !(USB_CFG_DESCR_PROPS_DEVICE & USB_PROP_IS_RAM)
-PROGMEM
+const PROGMEM
 #endif
-const char usbDescriptorDevice[];
+char usbDescriptorDevice[];
 
 extern
 #if !(USB_CFG_DESCR_PROPS_CONFIGURATION & USB_PROP_IS_RAM)
-PROGMEM
+const PROGMEM
 #endif
-const char usbDescriptorConfiguration[];
+char usbDescriptorConfiguration[];
 
 extern
 #if !(USB_CFG_DESCR_PROPS_HID_REPORT & USB_PROP_IS_RAM)
-PROGMEM
+const PROGMEM
 #endif
-const char usbDescriptorHidReport[];
+char usbDescriptorHidReport[];
 
 extern
 #if !(USB_CFG_DESCR_PROPS_STRING_0 & USB_PROP_IS_RAM)
-PROGMEM
+const PROGMEM
 #endif
-const char usbDescriptorString0[];
+char usbDescriptorString0[];
 
 extern
 #if !(USB_CFG_DESCR_PROPS_STRING_VENDOR & USB_PROP_IS_RAM)
-PROGMEM
+const PROGMEM
 #endif
-const int usbDescriptorStringVendor[];
+int usbDescriptorStringVendor[];
 
 extern
 #if !(USB_CFG_DESCR_PROPS_STRING_PRODUCT & USB_PROP_IS_RAM)
-PROGMEM
+const PROGMEM
 #endif
-const int usbDescriptorStringDevice[];
+int usbDescriptorStringDevice[];
 
 extern
 #if !(USB_CFG_DESCR_PROPS_STRING_SERIAL_NUMBER & USB_PROP_IS_RAM)
-PROGMEM
+const PROGMEM
 #endif
-const int usbDescriptorStringSerialNumber[];
+int usbDescriptorStringSerialNumber[];
 
 #endif /* __ASSEMBLER__ */
 

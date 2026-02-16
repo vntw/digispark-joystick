@@ -45,7 +45,7 @@ uchar       usbCurrentDataToken;/* when we check data toggling to ignore duplica
 #endif
 
 /* USB status registers / not shared with asm code */
-uchar               *usbMsgPtr;     /* data to transmit next -- ROM or RAM address */
+const uchar               *usbMsgPtr;     /* data to transmit next -- ROM or RAM address */
 static usbMsgLen_t  usbMsgLen = USB_NO_MSG; /* remaining number of bytes */
 static uchar        usbMsgFlags;    /* flag values see below */
 

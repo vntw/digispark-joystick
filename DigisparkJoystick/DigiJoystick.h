@@ -26,9 +26,9 @@
 #include "oddebug.h"
 #include "usbconfig.h"
  
-static uchar *rt_usbHidReportDescriptor=NULL;
+const static uchar *rt_usbHidReportDescriptor=NULL;
 static uchar rt_usbHidReportDescriptorSize=0;
-static uchar *rt_usbDeviceDescriptor=NULL;
+const static uchar *rt_usbDeviceDescriptor=NULL;
 static uchar rt_usbDeviceDescriptorSize=0;
 
 // TODO: Work around Arduino 12 issues better.
