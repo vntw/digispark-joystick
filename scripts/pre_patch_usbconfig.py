@@ -8,9 +8,9 @@ import re
 # -----------------------
 USB_CONFIG_PATH = "lib/DigisparkJoystick/usbconfig.h"
 
-VENDOR_STR  = "example.com"
-PRODUCT_STR = "Example Product"
-SERIAL_STR  = "example.com:example_product"
+VENDOR_STR  = env.GetProjectOption("custom_usb_vendor_str")
+PRODUCT_STR  = env.GetProjectOption("custom_usb_product_str")
+SERIAL_STR  = env.GetProjectOption("custom_usb_serial_str")
 
 # Optional, set to None to leave unchanged
 USB_VENDOR_ID_RHS = "0xc0, 0x16"  # e.g. "0xc0, 0x16"  (VID = 0x16C0)
@@ -51,6 +51,17 @@ if not usbconfig.exists():
 
 original = usbconfig.read_text(encoding="utf-8", errors="ignore")
 text = original
+
+if (VENDOR_STR is None or not isinstance(VENDOR_STR, str) or not VENDOR_STR.strip() or
+    PRODUCT_STR is None or not isinstance(PRODUCT_STR, str) or not PRODUCT_STR.strip() or
+    SERIAL_STR is None or not isinstance(SERIAL_STR, str) or not SERIAL_STR.strip()):
+    raise RuntimeError("Invalid config values")
+
+print(f"[pre] Setting custom config values: VENDOR_STR: {VENDOR_STR} PRODUCT_STR: {PRODUCT_STR} SERIAL_STR: {SERIAL_STR}")
+
+VENDOR_STR  = VENDOR_STR.strip()
+PRODUCT_STR = PRODUCT_STR.strip()
+SERIAL_STR  = SERIAL_STR.strip()
 
 text, n = replace_define_line(text, "USB_CFG_VENDOR_NAME", to_usb_charlist(VENDOR_STR))
 must_patch_once("USB_CFG_VENDOR_NAME", n)
